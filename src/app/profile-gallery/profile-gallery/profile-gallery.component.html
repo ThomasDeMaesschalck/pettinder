@@ -2,12 +2,24 @@
   <div class="row">
     <div id="gallery" class="col-md-9">
       <div>
-        <div class="gallery" *ngFor="let pet of pets" class="gallery-pet fader">
+        <div class="gallery" *ngFor="let pet of pets"
+             [class.active]="selectedPet === pet"
+             (click)="selectPet(pet, $event)"
+             class="gallery-pet fader">
           <img [src]="'https://pettinder.herokuapp.com/'+ pet.image" class="profile-picture">
           <div class="overlay">
             <div class="overlay-text">{{pet.name}}</div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="col-md-3" *ngIf="selectedPet">
+      <div class="gallery-detail">
+        <section id="petProfile" class="tiny-dialog fader">
+          <h3>{{selectedPet.name}}</h3>
+          <p>{{selectedPet.profileText}}</p>
+        </section>
       </div>
     </div>
   </div>

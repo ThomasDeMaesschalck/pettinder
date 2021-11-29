@@ -10,6 +10,7 @@ import {Pet} from "../../model/Pet";
 export class ProfileGalleryComponent implements OnInit {
   pets: Pet[] = [];
   name: string;
+  selectedPet: Pet | any;
 
   constructor(private _petService: PetService) {
     this.name = '';
@@ -20,6 +21,19 @@ export class ProfileGalleryComponent implements OnInit {
   }
 
   getPets(): void {
-  this._petService.getPets().subscribe(pet => this.pets = pet);
+    this._petService.getPets().subscribe(pet => this.pets = pet);
+  }
+
+  selectPet(selected: Pet, event: Event): void {
+    if (selected === this.selectedPet) {
+      this.deselectPet();
+    } else {
+      this.selectedPet = selected;
+    }
+    event.stopPropagation();
+  }
+
+  deselectPet(): void{
+    this.selectedPet = null;
   }
 }

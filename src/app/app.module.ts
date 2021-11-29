@@ -8,17 +8,21 @@ import { ProfileGalleryComponent } from './profile-gallery/profile-gallery/profi
 import {PetService} from "./service/pet.service";
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
+import { NameFilterPipe } from './pipes/name-filter.pipe';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileGalleryComponent
+    ProfileGalleryComponent,
+    NameFilterPipe
   ],
   imports: [
     BrowserModule,
     LayoutModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     RouterModule.forRoot([]),
 
   ],

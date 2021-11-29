@@ -11,9 +11,12 @@ export class ProfileGalleryComponent implements OnInit {
   pets: Pet[] = [];
   name: string;
   selectedPet: Pet | any;
+  searchText: string;
 
   constructor(private _petService: PetService) {
     this.name = '';
+    this.searchText = '';
+    this.selectedPet = undefined;
   }
 
   ngOnInit(): void {

@@ -29,6 +29,24 @@
           </div>
         </section>
 
+        <section class="tiny-dialog fader" id="savePet">
+          <div class="form-group">
+            <h3>Add your pet</h3>
+            <form (ngSubmit)="savePet()" [formGroup]="savePetForm">
+              <label>Name</label>
+              <input class="form-control" formControlName="name" placeholder="Name" type="text">
+              <label>Kind</label>
+              <input class="form-control" formControlName="kind" placeholder="Kind" type="text">
+              <label>Picture</label>
+              <input class="form-control" formControlName="image" placeholder="Image" type="text">
+              <label>Profile Text</label>
+              <input class="form-control" formControlName="profileText" placeholder="Profile Text" type="text">
+              <label>Popularity</label>
+              <input class="form-control" formControlName="popularity" placeholder="Popularity" type="text">
+              <button class="btn btn-primary pull-right" type="submit">Create Pet</button>
+            </form>
+          </div>
+        </section>
 
         <section id="petProfile" class="tiny-dialog fader" *ngIf="selectedPet">
           <h3>{{selectedPet.name}}</h3>

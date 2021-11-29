@@ -9,7 +9,7 @@ import {PetService} from "./service/pet.service";
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import { NameFilterPipe } from './pipes/name-filter.pipe';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import {FormsModule} from "@angular/forms";
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([]),
 
   ],

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map, Observable} from "rxjs";
@@ -24,5 +24,9 @@ export class PetService {
       .pipe(map(response => response.sort((a, b) => {
         return a.name < b.name ? -1 : 1;
       })));
+  }
+
+  savePet(pet: Pet) {
+    return this.http.post(this._pets, pet);
   }
 }

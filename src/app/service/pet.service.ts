@@ -26,6 +26,10 @@ export class PetService {
       })));
   }
 
+  getByName(name: string): Observable<any>{
+    return this.http.get(`${this._pets}/${name}`);
+  }
+
   savePet(pet: Pet) {
     return this.http.post(this._pets, pet);
   }

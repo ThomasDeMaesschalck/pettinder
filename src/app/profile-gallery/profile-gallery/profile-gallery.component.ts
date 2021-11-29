@@ -51,7 +51,8 @@ export class ProfileGalleryComponent implements OnInit {
   }
 
   savePet(): void {
-    this._petService.savePet(this.savePetForm.value).subscribe(result => {
+    this._petService.savePet(this.savePetForm.value)
+      .subscribe(result => {
       console.log('Your pet has been submitted', this.savePetForm.value);
       this.savePetForm.reset();
       this.getPets();

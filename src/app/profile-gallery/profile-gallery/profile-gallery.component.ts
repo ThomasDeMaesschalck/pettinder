@@ -57,6 +57,17 @@ export class ProfileGalleryComponent implements OnInit {
       this.savePetForm.reset();
       this.getPets();
     });
-
   }
+
+  deletePet(id: number){
+    this._petService.deletePet(id)  .subscribe(
+      result => {
+        console.log(result);
+        this.selectedPet = null;
+        this.getPets();
+      },
+      error => console.log(error));
+  }
+
 }
+

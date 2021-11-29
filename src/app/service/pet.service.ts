@@ -26,11 +26,15 @@ export class PetService {
       })));
   }
 
-  getByName(name: string): Observable<any>{
+  getByName(name: string): Observable<any> {
     return this.http.get(`${this._pets}/${name}`);
   }
 
   savePet(pet: Pet) {
     return this.http.post(this._pets, pet);
+  }
+
+  deletePet(id: number): Observable<any> {
+    return this.http.delete(`${this._pets}/${id}`, {responseType: 'text'});
   }
 }

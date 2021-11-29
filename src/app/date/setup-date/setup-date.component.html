@@ -10,8 +10,14 @@
           <p>{{pet.profileText}}</p>
         </div>
         <div class="clearfix">
-          <a class="btn btn-default" [routerLink]="['/']">Cancel</a>
 
+
+          <form (ngSubmit)="onSubmit()" [formGroup]="sendTextForm">
+            <label>Name</label>
+            <input class="form-control" formControlName="name" placeholder="Name" type="text">
+            <button class="btn btn-primary pull-right" type="submit">Let's Play</button>
+          </form>
+          <a class="btn btn-primary pull-right" [routerLink]="['/']">Cancel</a>
 
         </div>
       </div>

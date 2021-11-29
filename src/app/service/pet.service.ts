@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map, Observable} from "rxjs";
 import {Pet} from "../model/Pet";
@@ -9,32 +9,34 @@ import {Pet} from "../model/Pet";
 })
 export class PetService {
 
-  private _pets: string;
+  private _petsBackend: string;
 
   constructor(private http: HttpClient) {
-    this._pets = `${environment.backendUrl}/pets`;
-  }
-
-  get pets(): string {
-    return this.pets;
+    this._petsBackend = `${environment.backendUrl}/pets`;
   }
 
   getPets(): Observable<any> {
-    return this.http.get<Pet[]>(this._pets)
+    return this.http.get<Pet[]>(this._petsBackend)
       .pipe(map(response => response.sort((a, b) => {
         return a.name < b.name ? -1 : 1;
       })));
   }
 
   getByName(name: string): Observable<any> {
-    return this.http.get(`${this._pets}/${name}`);
+    return this.http.get(`${this._petsBackend}/${name}`);
   }
 
   savePet(pet: Pet) {
-    return this.http.post(this._pets, pet);
+    return this.http.post(this._petsBackend, pet);
   }
 
   deletePet(id: number): Observable<any> {
-    return this.http.delete(`${this._pets}/${id}`, {responseType: 'text'});
+    return this.http.delete(`${this._petsBackend}/${id}`, {responseType: 'text'});
   }
+
+  sendText(name: string){
+
+    return this.http.post(`${this._petsBackend}/sendText`, JSON.stringify(name));
+  }
+
 }

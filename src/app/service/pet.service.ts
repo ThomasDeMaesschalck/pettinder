@@ -20,6 +20,9 @@ export class PetService {
   }
 
   getPets(): Observable<any> {
-    return this.http.get<Pet[]>(this._pets);
+    return this.http.get<Pet[]>(this._pets)
+      .pipe(map(response => response.sort((a, b) => {
+        return a.name < b.name ? -1 : 1;
+      })));
   }
 }

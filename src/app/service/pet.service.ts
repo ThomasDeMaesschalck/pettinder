@@ -36,7 +36,7 @@ export class PetService {
 
   sendText(name: string){
 
-    return this.http.post(`${this._petsBackend}/sendText`, JSON.stringify(name));
+    return this.http.post(`${this._petsBackend}/sendText`, name);
   }
 
 }

@@ -33,7 +33,8 @@ export class SetupDateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.petService.sendText(this.sendTextForm.value)
+
+    this.petService.sendText(this.sendTextForm.controls['name'].value)
       .subscribe(result => {
           this.sendTextForm.reset();
         }

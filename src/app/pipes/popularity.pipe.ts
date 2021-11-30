@@ -6,15 +6,19 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class PopularityPipe implements PipeTransform {
 
   transform(popularity: number): string {
-    if (popularity < 1 || popularity === null) {
-      return 'Freezing'
-    } else if (popularity === 1 || popularity === 2) {
-      return 'Normal'
-    } else if (popularity === 3 || popularity === 4) {
-      return 'Popular'
-    } else {
-      return 'Sizzling hot!'
-    }
 
+    switch (popularity) {
+      case null:
+      case 0:
+        return 'Freezing'
+      case 1:
+      case 2:
+        return 'Normal'
+      case 3:
+      case 4:
+        return "Popular"
+      default:
+        return "Sizzling hot!"
+    }
   }
 }

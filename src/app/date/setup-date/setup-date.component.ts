@@ -32,8 +32,12 @@ export class SetupDateComponent implements OnInit {
     return this._pet;
   }
 
-  onSubmit(): void {
+  incrementPopularity(): void {
+    this.petService.incrementPopularity(this.pet.name).subscribe(() => console.log("incremented popularity"));
+  }
 
+  onSubmit(): void {
+    this.incrementPopularity();
     this.petService.sendText(this.sendTextForm.controls['name'].value)
       .subscribe(result => {
           this.sendTextForm.reset();

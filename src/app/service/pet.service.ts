@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {map, Observable} from "rxjs";
 import {Pet} from "../model/Pet";
@@ -34,8 +34,12 @@ export class PetService {
     return this.http.delete(`${this._petsBackend}/${id}`, {responseType: 'text'});
   }
 
-  sendText(name: string){
+  incrementPopularity(name: string): Observable<any> {
+    return this.http.get(`${this._petsBackend}/${name}/incrementPopularity`)
 
+  }
+
+  sendText(name: string) {
     return this.http.post(`${this._petsBackend}/sendText`, name);
   }
 

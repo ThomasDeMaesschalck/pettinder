@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {PetService} from "../../service/pet.service";
 import {Pet} from "../../model/Pet";
+import {PetKind} from "../../model/PetKind";
 
 @Component({
   selector: 'app-profile-gallery',
@@ -13,12 +14,14 @@ export class ProfileGalleryComponent implements OnInit {
   name: string;
   selectedPet: Pet | any;
   searchText: string;
+  petKinds = Object.values(PetKind);
+
 
   savePetForm = this.formBuilder.group({
-    name: '',
+    name: ['', Validators.required],
     kind: '',
-    image: '',
-    profileText: '',
+    image: ['', Validators.required],
+    profileText: ['', Validators.required],
     popularity: ''
   });
 
@@ -60,7 +63,7 @@ export class ProfileGalleryComponent implements OnInit {
   }
 
   deletePet(id: number){
-    this._petService.deletePet(id)  .subscribe(
+    this._petService.deletePet(id).subscribe(
       result => {
         console.log(result);
         this.selectedPet = null;

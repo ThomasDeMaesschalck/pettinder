@@ -58,6 +58,8 @@
         <section id="petProfile" class="tiny-dialog fader" *ngIf="selectedPet">
           <h3>{{selectedPet.name}}</h3>
           <p>{{selectedPet.profileText}}</p>
+          <p class="btn-warning btn-lg">Popular? {{selectedPet.popularity | popularity}}</p>
+
           <div class="dialog-centered">
             <a [routerLink]="['../setup-date', selectedPet.name ]"
                type="button"

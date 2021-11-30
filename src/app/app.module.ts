@@ -11,13 +11,15 @@ import {HttpClientModule} from "@angular/common/http";
 import { NameFilterPipe } from './pipes/name-filter.pipe';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SetupDateComponent } from './date/setup-date/setup-date.component';
+import { PopularityPipe } from './pipes/popularity.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileGalleryComponent,
     NameFilterPipe,
-    SetupDateComponent
+    SetupDateComponent,
+    PopularityPipe
   ],
   imports: [
     BrowserModule,
